@@ -21,3 +21,7 @@ Swagger API Documentation can be accessed at: \
 ## Stop the Application
 
 `docker-compose down`
+
+## Technologies Used
+
+Java (Spring Boot), Docker, docker-compose, MongoDB
