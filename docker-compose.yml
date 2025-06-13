@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  library-application:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: book-lib-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - library_db
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://library_db:27017/booksDB
+    networks:
+      - books-network
+
+  library_db:
+    image: mongo
+    container_name: library_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - books-network
+
+networks:
+  books-network:
+
+volumes:
+  mongo-data:
